@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+'use strict';
+
+
+var minimist = require('minimist');
+var chalk = require('chalk');
+
+var args = args || minimist(process.argv.slice(2));
+var extensionsRoot = args._[0];
+
+// extensionsRoot process, exit when unset
+if (!extensionsRoot) {
+    console.log(chalk.red('Miss Mip Extensions path!'));
+    console.log('CLI Usage: mip-extension-optimise [extensions-path]');
+    process.exit(1);
+}
+extensionsRoot = require('path').resolve(process.cwd(), extensionsRoot);
+
+// traverse extensionsRoot, and do building
+require('../lib/load')(extensionsRoot).then(
+    // TODO: just test now
+    function (extensions) {
+        extensions.forEach(function (ext) {
+            console.log(ext.info);
+        });
+    }
+);
+
