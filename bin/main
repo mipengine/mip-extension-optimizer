@@ -5,6 +5,7 @@
 
 var minimist = require('minimist');
 var chalk = require('chalk');
+var path = require('path');
 
 var args = args || minimist(process.argv.slice(2));
 var extensionsRoot = args._[0];
@@ -15,15 +16,29 @@ if (!extensionsRoot) {
     console.log('CLI Usage: mip-extension-optimise [extensions-path]');
     process.exit(1);
 }
-extensionsRoot = require('path').resolve(process.cwd(), extensionsRoot);
+extensionsRoot = path.resolve(process.cwd(), extensionsRoot);
+
 
 // traverse extensionsRoot, and do building
+// TODO: trace version use git, and check which version is built, which is not.
+var outputDir = path.resolve(extensionsRoot, 'dist');
 require('../lib/load')(extensionsRoot).then(
-    // TODO: just test now
     function (extensions) {
-        extensions.forEach(function (ext) {
-            console.log(ext.info);
+
+        extensions.forEach(function (extension) {
+
+            extension.build(outputDir)
+                .catch(function (e) {throw e;})
+                .then(
+                    function () {
+                        console.log(chalk.green(name + '@' + version + ' builded!'));
+                    },
+                    function (err) {
+                        console.log(chalk.red(name + '@' + version + ' build fail! ' + err));
+                    }
+                );
         });
+
     }
 );
 
