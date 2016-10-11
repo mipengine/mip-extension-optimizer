@@ -4,6 +4,7 @@ mip-extension-optimizer
 
 MIP Extension Optimizer
 
+<a href="https://circleci.com/gh/mipengine/mip-extension-optimizer/tree/master"><img src="https://img.shields.io/circleci/project/mipengine/mip-extension-optimizer/master.svg?style=flat-square" alt="Build Status"></a>
 
 ## CLI
 
