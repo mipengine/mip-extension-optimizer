@@ -4,7 +4,6 @@
 
 
 var minimist = require('minimist');
-var chalk = require('chalk');
 var path = require('path');
 
 var args = args || minimist(process.argv.slice(2));
@@ -22,23 +21,35 @@ extensionsRoot = path.resolve(process.cwd(), extensionsRoot);
 // traverse extensionsRoot, and do building
 // TODO: trace version use git, and check which version is built, which is not.
 var outputDir = path.resolve(extensionsRoot, 'dist');
-require('../lib/load')(extensionsRoot).then(
-    function (extensions) {
+var reporter = require('../lib/cli-reporter');
 
-        extensions.forEach(function (extension) {
 
-            extension.build(outputDir)
-                .catch(function (e) {throw e;})
-                .then(
-                    function () {
-                        console.log(chalk.green(name + '@' + version + ' builded!'));
-                    },
-                    function (err) {
-                        console.log(chalk.red(name + '@' + version + ' build fail! ' + err));
-                    }
-                );
-        });
+require('../lib/load')(extensionsRoot)
+    .then(
+        function (extensions) {
+            var promise = Promise.resolve();
 
-    }
-);
+            extensions.forEach(function (extension) {
+                var name = extension.info.name;
+                var version = extension.info.version;
+
+                promise = promise.then(function () {
+                    reporter.info(name + '@' + version);
+                    reporter.info('=========================');
+
+                    return extension.build(outputDir, reporter)
+                        .then(function () {
+                            reporter.info('\n\n');
+                        });
+                });
+
+            });
+
+            return promise;
+        }
+    )
+    .then(function () {
+        reporter.info('All Done!')
+    });
+
 
