@@ -9,3 +9,4 @@ test:
     - ls test/dist/mip-test2/1.1.0
     - ls test/target/dist/mip-test1/1.0.0
     - ls test/target/dist/mip-test2/1.1.0
+    - node bin/main test/target
