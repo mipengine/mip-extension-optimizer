@@ -5,6 +5,7 @@ machine:
 test:
   override:
     - npm run test
-    - ls test/dist/
-    - ls test/dist/mip-test1
-    - ls test/dist/mip=test2
+    - ls test/dist/mip-test1/1.0.0
+    - ls test/dist/mip-test2/1.1.0
+    - ls test/target/dist/mip-test1/1.0.0
+    - ls test/target/dist/mip-test2/1.1.0

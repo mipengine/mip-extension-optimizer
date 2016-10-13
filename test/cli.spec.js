@@ -55,7 +55,7 @@ describe("CLI", function () {
             expect(extModuleContent).toMatch(genDefinePattern('mip-test2/ext', []));
             expect(mainCSSContent).toMatch(/^mip-test2\{background:blue/);
 
-            rmdir(path.resolve(__dirname, 'target', 'dist'));
+            // rmdir(path.resolve(__dirname, 'target', 'dist'));
             done();
         });
     });
