@@ -34,7 +34,7 @@ describe("Build", function () {
                 expect(utilModuleContent).toMatch(genDefinePattern('mip-test1/util', []));
                 expect(mainCSSContent).toMatch(/^mip-test1\{background:red/);
 
-                rmdir(outputDir)
+                // rmdir(outputDir)
                 done();
             });
 
@@ -63,7 +63,7 @@ describe("Build", function () {
                 expect(extModuleContent).toMatch(genDefinePattern('mip-test2/ext', []));
                 expect(mainCSSContent).toMatch(/^mip-test2\{background:blue/);
 
-                rmdir(outputDir)
+                // rmdir(outputDir)
                 done();
             });
 

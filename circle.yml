@@ -1,7 +1,10 @@
 machine:
   node:
-    version: 6
+    version: 4.0.0
 
 test:
   override:
     - npm run test
+    - ls test/dist/
+    - ls test/dist/mip-test1
+    - ls test/dist/mip=test2
