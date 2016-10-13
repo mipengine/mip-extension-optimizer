@@ -7,6 +7,9 @@ test:
     - npm run test
     - ls test/dist/mip-test1/1.0.0
     - ls test/dist/mip-test2/1.1.0
+    - node bin/main test/target
     - ls test/target/dist/mip-test1/1.0.0
     - ls test/target/dist/mip-test2/1.1.0
-    - node bin/main test/target
+    - cat test/target/dist/mip-test1/1.0.0/mip-test1.css
+    - cat test/target/dist/mip-test1/1.0.0/mip-test1.less
+    - cat test/target/dist/mip-test1/1.0.0/mip-test1.js
