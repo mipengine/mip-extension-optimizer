@@ -27,8 +27,8 @@
         "minimist": "^1.2.0",
         "object-assign": "^4.1.0",
 
-        "mip-builder": "^1.2.0",
-        "mip-processor-amd": "^1.2.0",
+        "mip-builder": "^1.2.2",
+        "mip-processor-amd": "^1.2.1",
         "mip-processor-less": "^1.2.0",
         "mip-processor-jscompress": "^1.2.0"
     },
