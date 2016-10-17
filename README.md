@@ -39,12 +39,14 @@ var extOptimizer = require('mip-extension-optimizer');
 
 extOptimizer.load('/your/extensions/root/directory').then(
     function (extensions) {
-        // extension.info has some data from package.json and README.md, such as:
-        // ================
-        // extension.info.name (parse from package.json)
-        // extension.info.version (parse from package.json)
-        // extension.info.doc (parse from README.md)
-        // extension.info.usage (parse from README.md)
+        extensions.forEach(function (extension) {
+            // extension.info has some data from package.json and README.md, such as:
+            // ================
+            // extension.info.name (parse from package.json)
+            // extension.info.version (parse from package.json)
+            // extension.info.doc (parse from README.md)
+            // extension.info.usage (parse from README.md)
+        });
     }
 );
 ```
@@ -61,4 +63,26 @@ var extension = new extOptimizer.Extension('/your/extension/directory');
 // extension.info.version (parse from package.json)
 // extension.info.doc (parse from README.md)
 // extension.info.usage (parse from README.md)
+```
+
+### use build result in program
+
+```js
+var extOptimizer = require('mip-extension-optimizer');
+var extension = new extOptimizer.Extension('/your/extension/directory');
+var builder = extension.createBuilder();
+
+builder.process().then(function () {
+    // get all files of extension, and traverse
+    var files = getFiles();
+    files.forEach(function (file) {
+        // ...
+    });
+
+    // get file by path (relative)
+    var file = builder.getFile('extension-name/main.js');
+
+    // get file content
+    file.getData();
+});
 ```
