@@ -20,8 +20,14 @@ extensionsRoot = path.resolve(process.cwd(), extensionsRoot);
 
 // traverse extensionsRoot, and do building
 // TODO: trace version use git, and check which version is built, which is not.
-var outputDir = path.resolve(extensionsRoot, 'dist');
 var reporter = require('../lib/cli-reporter');
+var outputDir = args.o || args.output;
+if (!outputDir) {
+    outputDir = path.resolve(extensionsRoot, 'dist');
+}
+else {
+    outputDir = path.resolve(process.cwd(), outputDir);
+}
 
 
 require('../lib/load')(extensionsRoot)
