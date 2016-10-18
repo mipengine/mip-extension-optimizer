@@ -5,6 +5,7 @@
 
 var minimist = require('minimist');
 var path = require('path');
+var util = require('../lib/util');
 
 var args = args || minimist(process.argv.slice(2));
 var extensionsRoot = args._[0];
@@ -33,6 +34,12 @@ else {
     outputDir = path.resolve(process.cwd(), outputDir);
 }
 
+var buildExtensions = args._.slice(1);
+var buildExtensionsFlag = {};
+buildExtensions.forEach(function (name) {
+    buildExtensionsFlag[name] = true;
+});
+
 
 require('../lib/load')(extensionsRoot)
     .then(
@@ -41,16 +48,28 @@ require('../lib/load')(extensionsRoot)
 
             extensions.forEach(function (extension) {
                 var name = extension.info.name;
-                var version = extension.info.version;
+                if (buildExtensions.length > 0 && !buildExtensionsFlag[name]) {
+                    return;
+                }
+
 
                 promise = promise.then(function () {
-                    reporter.info(name + '@' + version);
+                    var version = extension.info.version;
+                    reporter.info(name + '@' + extension.info.version);
                     reporter.info('=========================');
 
-                    return extension.build(outputDir, reporter)
-                        .then(function () {
-                            reporter.info('\n\n');
-                        });
+                    var buildPromise;
+                    if (util.isDirectory(path.resolve(outputDir, name, version))) {
+                        reporter.warn('Exists! You dont need to build once more.');
+                        buildPromise = Promise.resolve();
+                    }
+                    else {
+                        buildPromise = extension.build(outputDir, reporter);
+                    }
+
+                    return buildPromise.then(function () {
+                        reporter.info('\n');
+                    });
                 });
 
             });
@@ -59,7 +78,7 @@ require('../lib/load')(extensionsRoot)
         }
     )
     .then(function () {
-        reporter.info('All Done!')
+        reporter.success('All Done!')
     });
 
 
