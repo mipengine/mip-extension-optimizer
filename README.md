@@ -8,16 +8,29 @@ MIP Extension Optimizer
 
 ## CLI
 
-First, install with `npm i -g`
+### install
+
+Install with `npm i -g`
 
 ```
 $ npm i -g mip-extension-optimizer
 ```
 
-And then, use `mip-extension-optimise [extensions dir]` command to optimise MIP extensions.
+### use
+
+Call `mip-extension-optimise` command to optimise MIP extensions.
+
+#### format
 
 ```
-$ mip-extension-optimise mip-extensions
+mip-extension-optimise <extensions-path> [-o output-path] [extension, extension ...]
+```
+
+#### example
+
+```
+$ mip-extension-optimise mip-extensions -o mip-extensions-dist
+$ mip-extension-optimise mip-extensions -o mip-extensions-dist mip-fixed
 ```
 
 ## API
