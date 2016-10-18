@@ -11,7 +11,12 @@ var extensionsRoot = args._[0];
 
 // extensionsRoot process, exit when unset
 if (!extensionsRoot) {
-    console.log('CLI Usage: mip-extension-optimise <extensions-path> [-o output-path]');
+    console.log('CLI Usage:');
+    console.log('mip-extension-optimise <extensions-path> [-o output-path] [extension, extension ...]');
+    console.log();
+    console.log('Example:');
+    console.log('mip-extension-optimise ./mip-extensions -o ./mip-extensions-dist');
+    console.log('mip-extension-optimise ./mip-extensions -o ./mip-extensions-dist mip-fixed mip-ad');
     process.exit(0);
 }
 extensionsRoot = path.resolve(process.cwd(), extensionsRoot);
