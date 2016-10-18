@@ -67,9 +67,13 @@ require('../lib/load')(extensionsRoot)
                         buildPromise = extension.build(outputDir, reporter);
                     }
 
-                    return buildPromise.then(function () {
-                        reporter.info('\n');
-                    });
+                    return buildPromise
+                        .then(function () {
+                            reporter.info('\n');
+                        })
+                        .catch(function (e) {
+                            console.log(e);
+                        });
                 });
 
             });

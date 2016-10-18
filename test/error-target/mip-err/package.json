@@ -1,0 +1,7 @@
+{
+    "name": "mip-err",
+    "version": "1.0.0",
+    "engines": {
+        "mip": ">=1.1.0"
+    }
+}
