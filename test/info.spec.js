@@ -4,6 +4,18 @@ var fs = require('fs');
 
 describe("Extension Info", function () {
 
+    it("name", function () {
+        var extension = new Extension(path.resolve(__dirname, 'target', 'mip-test2'));
+
+        expect(extension.info.name).toBe('mip-test2');
+    });
+
+    it("version", function () {
+        var extension = new Extension(path.resolve(__dirname, 'target', 'mip-test2'));
+
+        expect(extension.info.version).toBe('1.1.0');
+    });
+
     it("single examples", function () {
         var extension = new Extension(path.resolve(__dirname, 'target', 'mip-test2'));
         var examples = extension.info.examples;
