@@ -57,8 +57,8 @@ extOptimizer.load('/your/extensions/root/directory').then(
             // ================
             // extension.info.name (parse from package.json)
             // extension.info.version (parse from package.json)
-            // extension.info.doc (parse from README.md)
-            // extension.info.usage (parse from README.md)
+            // extension.info.props (parse from README.md)
+            // extension.info.examples (parse from README.md)
         });
     }
 );
@@ -74,8 +74,8 @@ var extension = new extOptimizer.Extension('/your/extension/directory');
 // ================
 // extension.info.name (parse from package.json)
 // extension.info.version (parse from package.json)
-// extension.info.doc (parse from README.md)
-// extension.info.usage (parse from README.md)
+// extension.info.props (parse from README.md)
+// extension.info.examples (parse from README.md)
 ```
 
 ### use build result in program
