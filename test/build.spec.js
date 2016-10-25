@@ -22,6 +22,7 @@ describe("Build", function () {
                 expect(fileExists(mainModule)).toBeTruthy();
                 expect(fileExists(utilModule)).toBeTruthy();
                 expect(fileExists(mainCSS)).toBeTruthy();
+                expect(fileExists(path.resolve(outputDir, 'mip-test1', '1.0.0', 'setting', 'example.preset'))).toBeFalsy();
 
                 var mainModuleContent = fs.readFileSync(mainModule, 'UTF-8');
                 var utilModuleContent = fs.readFileSync(utilModule, 'UTF-8');
@@ -34,7 +35,7 @@ describe("Build", function () {
                 expect(utilModuleContent).toMatch(genDefinePattern('mip-test1/util', []));
                 expect(mainCSSContent).toMatch(/^mip-test1\{background:red/);
 
-                rmdir(outputDir)
+                // rmdir(outputDir)
                 done();
             });
 
