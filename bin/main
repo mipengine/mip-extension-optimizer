@@ -73,7 +73,6 @@ require('../lib/load')(extensionsRoot)
                         })
                         .catch(function (e) {
                             console.log(e);
-                            process.exit();
                         });
                 });
 
