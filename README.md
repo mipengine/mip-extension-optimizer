@@ -29,8 +29,8 @@ mip-extension-optimise <extensions-path> [-o output-path] [extension, extension 
 #### example
 
 ```
-$ mip-extension-optimise mip-extensions -o mip-extensions-dist
-$ mip-extension-optimise mip-extensions -o mip-extensions-dist mip-fixed
+$ mip-extension-optimise mip-extensions/src -o mip-extensions-dist
+$ mip-extension-optimise mip-extensions/src -o mip-extensions-dist mip-fixed
 ```
 
 ## API
