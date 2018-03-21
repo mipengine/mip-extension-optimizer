@@ -86,7 +86,6 @@ describe("Extension Info", function () {
             expect(deps.length).toBe(1);
             expect(deps[0]).toBe('https://where.com/mip-test1.js');
         });
-
         it('deps2', function () {
             var extension = new Extension(path.resolve(__dirname, 'target', 'mip-test2'));
             var deps = extension.info.deps;
