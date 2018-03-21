@@ -59,6 +59,7 @@ extOptimizer.load('/your/extensions/root/directory').then(
             // extension.info.version (parse from package.json)
             // extension.info.props (parse from README.md)
             // extension.info.examples (parse from README.md)
+            // extension.info.deps (parse from README.md)
         });
     }
 );
@@ -76,6 +77,7 @@ var extension = new extOptimizer.Extension('/your/extension/directory');
 // extension.info.version (parse from package.json)
 // extension.info.props (parse from README.md)
 // extension.info.examples (parse from README.md)
+// extension.info.deps (parse from README.md)
 ```
 
 ### use build result in program
