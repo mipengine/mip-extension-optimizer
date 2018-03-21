@@ -4,7 +4,7 @@ Description for mip-test2
 
 可用性|稳定
 支持布局|不使用布局
-所需脚本|https://where.com/mip-test2.js
+所需脚本|https://where.com/mip-test2.js <br> https://where.com/mip-test2-deps1.js , https://where.com/mip-test2-deps2.js<br>https://where.com/mip-test2-deps3.js
 
 ## 示例
 

@@ -77,4 +77,26 @@ describe("Extension Info", function () {
         expect(props[1].infos[4].info).toBe('400');
     });
 
+    describe('deps', function () {
+        it('deps1', function () {
+            var extension = new Extension(path.resolve(__dirname, 'target', 'mip-test1'));
+            var deps = extension.info.deps;
+
+            expect(Array.isArray(deps)).toBeTruthy();
+            expect(deps.length).toBe(1);
+            expect(deps[0]).toBe('https://where.com/mip-test1.js');
+        });
+
+        it('deps2', function () {
+            var extension = new Extension(path.resolve(__dirname, 'target', 'mip-test2'));
+            var deps = extension.info.deps;
+
+            expect(Array.isArray(deps)).toBeTruthy();
+            expect(deps.length).toBe(4);
+            expect(deps[0]).toBe('https://where.com/mip-test2.js');
+            expect(deps[1]).toBe('https://where.com/mip-test2-deps1.js');
+            expect(deps[2]).toBe('https://where.com/mip-test2-deps2.js');
+            expect(deps[3]).toBe('https://where.com/mip-test2-deps3.js');
+        });
+    });
 });
