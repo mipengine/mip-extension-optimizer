@@ -40,6 +40,14 @@
         {
             "name": "erik",
             "email": "errorrik@gmail.com"
+        },
+        {
+            "name": "Jackson",
+            "email": "smartfutureplayer@gmail.com"
+        },
+        {
+            "name": "xuexb",
+            "email": "fe.xiaowu@gmail.com"
         }
     ],
     "license": "MIT",
